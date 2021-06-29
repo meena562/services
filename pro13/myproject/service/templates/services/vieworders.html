@@ -1,0 +1,59 @@
+{% extends 'services/base.html' %}
+{% block title %}viewuser{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-2"></div>
+		<div class="col-md-10 card">
+			{% if user.role == 1 %}
+			<table class="table table-striped table-hover">
+				<tr class="bg-dark text-light">
+					<th>S.no</th>
+					<th>sid</th>
+					<th>service_type</th>
+					<th>price</th>
+					<th>status</th>
+
+				</tr>
+				{% for i in s %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{i.user_id}}</td>
+					<td>{{i.service_type}}</td>
+					<td>{{i.price}}</td>
+					<td>{{i.is_status}}</td>
+					{% if i.status is 1 %}
+					<td>service pending</td>
+					{% elif i.status is 0 %}
+					<td>service provided</td>
+					{% endif %}
+					<td><a href="{% url 'serpending' i.id %}" class="btn btn-info">1</a><a href="{% url 'serprovided' i.id %}" class="btn btn-danger">0</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% else %}
+			<div class="row mt-3">
+				<div class="col-md-2"></div>
+					<table class="table table-striped table-hover bg-warning">
+						<tr class="bg-dark text-light">
+							<th>S.no</th>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Lastname</th>
+						</tr>
+						{% for i in u %}
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{i.username}}</td>
+							<td>{{i.email}}</td>
+							<td>{{i.last_name}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

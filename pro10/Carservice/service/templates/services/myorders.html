@@ -1,0 +1,46 @@
+{% extends 'services/base.html' %}
+{% block content %}
+{% load static %}
+<div class="row mt-3">
+    <div class="container">
+    <div class="">
+     <!-- <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{count}}</b></span></h4> -->
+   
+     <table class="table table-striped">
+     
+      <tr>
+      <th>service_type</th>
+      <th>Price</th>
+      <th>Ordered Date</th>
+      <th>Status</th>
+      <th>Available Dates</th>
+      <th>Action</th>
+      </tr>
+      {% for i in my %}
+      <tr>
+         <td>{{i.service_type}}</td>
+         <td><span class="price">Rs.{{i.price}}</span></td>
+         <td><span class="price">Rs.{{i.date}}</span></td>
+         {% if i.is_status == 1 %}
+         <td>service pending</td>
+         {% else %}
+         <td>service provided</td>
+         {% endif %}
+         {% if i.is_status == 1 %}
+         <td>2/5/2021</td>
+         {% else %}
+         <td>1/2/2021</td>
+         {% endif %}
+          <td><a href="{% url 'cancle' %}" class="btn btn-danger">Cancle</a></td>
+       </tr>
+       {% endfor %}
+       <tr>
+        <th>Total</th>
+        <th><p><b>Rs.{{sum}}</b></p></th>
+       </tr>
+     </table>
+     
+</div>
+</div>
+  </div>
+{% endblock %}

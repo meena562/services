@@ -1,0 +1,31 @@
+{% extends 'services/base.html' %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+
+<!-- <h3>Welcome {{user.username}}</h3>
+<a href="">My Cases</a>
+</br>
+<a href="">Crimes List</a> -->
+
+<div class="container mt-5">
+	<div class="jumbotron">
+		<h3>
+		{% if user.is_superuser %}
+		SuperUser Main Page
+
+		{% elif user.role == 1 %}
+		owner Page
+
+		{% elif user.role == 2 %}
+		customer Page
+
+		{% else %}
+		welcome {{user.username}}
+
+		{% endif %}
+
+		</h3>
+		
+	</div>
+</div>
+{% endblock %}

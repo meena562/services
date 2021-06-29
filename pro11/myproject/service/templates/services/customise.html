@@ -1,0 +1,34 @@
+{% extends 'services/base.html' %}
+{% block content %}
+{% load static %}
+<body>
+<div class="container mt-4">
+	<div class="row">
+	<div class="card col-md-4 mt-3 mx-5">
+		 	<form method="post" enctype="multipart/form-data">
+		 		{% csrf_token %}
+		 		<h3 class="bg-dark text-center text-white p-2">Add Details</h3>
+		 		<table class="table table-borderless">
+		 			{% for j in u %}
+		 			<tr>
+		 				<td>{{j}}</td>
+		 			</tr>
+		 			{% endfor %}
+		 		</table>
+		 		<input type="submit" value="send" class="form-control btn btn-success btn-block my-2">
+		 	</form>
+		 </div>
+
+		<div class="card col-md-6 mt-3">
+			<h4 class="card-title">How customisation Works???</h4>
+			<ul class="text-info  mx-8"><li>You send us a service for us based on car category and model</li><li>
+We will get in touch with you to discuss more and provide the service you wish for.</li><li>
+Our appointed stylist shall get back to you with a detailed sketch of your custom garment..</li>
+<li>The service can be provided for you after completing payment and our team get in touch with you for futher details</li>
+
+</ul>
+</div>
+</div>
+</div>
+		 {% endblock %}
+</body>
